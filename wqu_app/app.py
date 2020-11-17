@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 
 from message import greet
 
@@ -6,7 +6,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return render_template('index.html', message=greet())
+    ip_address = request.headers['X-Forwarded-For']
+
+    return render_template('index.html', message=greet(ip_address))
 
 
 if __name__ == '__main__':
