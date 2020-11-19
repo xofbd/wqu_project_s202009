@@ -1,11 +1,12 @@
 import requests
 
+
 def retrieve_local_ip_adress():
     """Return IP address of our computer."""
     response = requests.get('https://api.ipify.org')
-    
+
     return response.text
-    
+
 
 def get_geolocation(ip_address):
     """Return gelociaton of an IP address."""
@@ -23,15 +24,16 @@ def get_weather(coords):
 
     response = requests.get(url, params=params)
     data = response.json()
-    
+
     return data['properties']['timeseries'][0]['data']['instant']['details']['air_temperature']
+
 
 def greet(ip_address):
     coords = get_geolocation(ip_address)
     temperature = get_weather(coords)
-    
+
     return f"Hello, the temperature is {temperature} deg C"
-    
+
 
 if __name__ == '__main__':
     print(greet())
