@@ -4,4 +4,4 @@ export FLASK_APP=wqu_app/app.py
 export FLASK_DEBUG=True
 export DEPLOY=local
 
-python -m flask run
+python -m flask run --host=0.0.0.0

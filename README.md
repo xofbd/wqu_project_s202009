@@ -38,6 +38,11 @@ If you are using Windows, you can:
 1. run `python -m flask run`.
 1. open the link in the command line.
 
+Alternatively, you can deploy using [Docker](https://www.docker.com/).
+
+1. `docker build -t wqu_app .`
+1. `docker run -d -p 5000:5000 wqu_app`
+
 ## Deploying to Heroku
 
 Make sure your app is ready to be deployed to Heroku by running Flask locally. To deploy to Heroku:
