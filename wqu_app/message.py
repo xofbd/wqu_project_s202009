@@ -30,11 +30,10 @@ def get_weather(coords):
 
 
 def greet(ip_address):
-    coords = get_geolocation(ip_address)[0]
+    coords, city = get_geolocation(ip_address)
     temperature = get_weather(coords)
-    city = get_geolocation(ip_address)[1]
 
-    return f"Hello, the temperature in {city}(where your internet provider is located) is {temperature} deg C"
+    return f"Hello, the temperature in {city} (based on your IP address) is {temperature} deg C"
 
 
 if __name__ == '__main__':
