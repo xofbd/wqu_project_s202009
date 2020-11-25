@@ -21,8 +21,8 @@ def get_weather(coords):
     """Return weather data for a given set of coordinates."""
     url = 'https://api.met.no/weatherapi/locationforecast/2.0/compact'
     params = {'lat': coords[0], 'lon': coords[1]}
-
-    response = requests.get(url, params=params)
+    headers = {'User-Agent': 'WQU weather application'}
+    response = requests.get(url, params=params, headers=headers)
     data = response.json()
 
     return data['properties']['timeseries'][0]['data']['instant']['details']['air_temperature']
