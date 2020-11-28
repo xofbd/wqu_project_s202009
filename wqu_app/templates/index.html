@@ -10,7 +10,7 @@
             <p> {{ message | safe }} </p>
         </div>
         
-        <div id="altair-timeseries"></div>
+        <div id="altair-line"></div>
         </div>
         <!-- Placeholder for the tooltip -->
         <div id="vis-tooltip" class="vg-tooltip"></div>
@@ -20,14 +20,14 @@
         function parse(url, div) {
         var opt = { mode: "vega-lite",
             renderer: "svg",
-            actions: { export: true, source: false, editor: false }
+            actions: { export: true, source: true, editor: true }
             };
         vegaEmbed("#" + div, url, opt, function (error, result) {
            vegaTooltip.vegaLite(result.view, url);
            });
           }
         //Parse your Json variable here
-        parse({{ graph | safe }}, "altair-timeseries")
+        parse({{ graph | safe }}, "altair-line")
         </script>
     </body>
 </html>
