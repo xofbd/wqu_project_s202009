@@ -53,7 +53,7 @@ def generate_chart(next_24h):
                                                     tooltip=['Temperature', 'Time'],
                                                     color = 'Day').properties(width=600,height=400).interactive(
                                                         name=None, bind_x=True, bind_y=True)
-    return hour_chart
+    return altair_viewer.display(hour_chart, inline=True)
 
 def greet(ip_address):
     coords, city = get_geolocation(ip_address)
