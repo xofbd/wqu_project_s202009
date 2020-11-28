@@ -9,7 +9,41 @@
         <div class="text-content">
             <p> {{ message | safe }} </p>
         </div>
-        
+        <div id="altair-vega1">
+        {
+          "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+          "data": {"url": path},
+          "mark": {"type": "line", "point": true},
+          "encoding": {
+            "x": {
+              "field": "miles", "type": "quantitative",
+              "scale": {"zero": false}
+            },
+            "y": {
+              "field": "gas", "type": "quantitative",
+              "scale": {"zero": false}
+            },
+            "order": {"field": "year"}
+          }
+        }
+        </div>
+        <div id="altair-vega2">
+        {
+          "config": {"view": {"width": 400, "height": 300}, "mark": {"tooltip": null}},
+          "data": {
+            "url": graph,
+            "format": {"type": "json"}
+          },
+          "mark": "bar",
+          "encoding": {
+            "x": {"type": "ordinal", "field": "Lag"},
+            "y": {"type": "quantitative", "field": "Autocorrelation"}
+          },
+          "height": 600,
+          "width": 800,
+          "$schema": "https://vega.github.io/schema/vega-lite/v3.4.0.json"
+        }
+        </div>
         <div id="altair-line"></div>
         </div>
         <!-- Placeholder for the tooltip -->
