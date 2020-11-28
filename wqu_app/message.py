@@ -48,7 +48,7 @@ def generate_chart(next_24h):
     df['Day'] = [df['Time'][i].strftime("%A") for i in range(0,len(df))]
     
    
-    hour_chart = alt.Chart(df[['Time', 'Temperature']]).mark_line(point={'filled':False,'fill':'white'}).encode(alt.X('Time', sort=None),
+    hour_chart = alt.Chart(df[['Time', 'Temperature', 'Day']]).mark_line(point={'filled':False,'fill':'white'}).encode(alt.X('Time', sort=None),
                                                     alt.Y('Temperature', scale=alt.Scale(domain=(min_scaler,max_scaler))),
                                                     tooltip=['Temperature', 'Time'],
                                                     color = 'Day').properties(width=600,height=400).interactive(
