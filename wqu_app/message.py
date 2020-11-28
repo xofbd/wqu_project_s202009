@@ -29,7 +29,7 @@ def get_weather(coords):
     return data['properties']['timeseries'][0]['data']['instant']['details']['air_temperature']
 
 def get_forecast():
-    forecast = get_weather(get_geolocation()[0])[1]
+    forecast = get_weather(get_geolocation(ip_address)[0])[1]
     forecast_list = []
     for i in range(3, 27):
         forecast_list.append([forecast[i]['time'],forecast[i]['data']['instant']['details']['air_temperature']])
