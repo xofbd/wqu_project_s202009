@@ -5,4 +5,3 @@ datetime
 altair
 altair_viewer
 ipython
-vega

@@ -48,15 +48,11 @@ def generate_chart(next_24h):
     df['Day'] = [df['Time'][i].strftime("%A") for i in range(0,len(df))]
     
    
-    hour_chart = alt.Chart(df[['Time', 'Temperature', 'Day']]).mark_line(point={'filled':False,'fill':'white'}).encode(alt.X('Time', sort=None),
+    hour_chart = alt.Chart(df).mark_line(point={'filled':False,'fill':'white'}).encode(alt.X('Time', sort=None),
                                                     alt.Y('Temperature', scale=alt.Scale(domain=(min_scaler,max_scaler))),
-                                                    tooltip=[
-                                                        alt.Tooltip('Time',timeUnit='yearmonthdate', title='Date'),
-                                                        alt.Tooltip('Time', timeUnit='hoursminutes', title='Time'),
-                                                        alt.Tooltip('Temperature')],
+                                                    tooltip=['Temperature', 'Time'],
                                                     color = 'Day').properties(width=600,height=400).interactive(
                                                         name=None, bind_x=True, bind_y=True)
-    
     chart_json = hour_chart.to_json()
     return chart_json
 
