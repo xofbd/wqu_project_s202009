@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 from datetime import datetime, timedelta
 import altair as alt
+alt.data_transformers.enable("data_server")
 import altair_viewer
 import IPython
 
@@ -54,7 +55,7 @@ def generate_chart(next_24h):
                                                     tooltip=['Temperature', 'Time'],
                                                     color = 'Day').properties(width=600,height=400).interactive(
                                                         name=None, bind_x=True, bind_y=True)
-    return hour_chart.save('chart.json')
+    return hour_chart.save('chart.html')
 
 def greet(ip_address):
     coords, city = get_geolocation(ip_address)
