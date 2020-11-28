@@ -1,3 +1,8 @@
 flask
 requests
 gunicorn
+datetime
+altair
+altair_viewer
+ipython
+vega

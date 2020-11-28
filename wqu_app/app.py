@@ -1,4 +1,6 @@
 import os
+import vega
+
 
 from flask import Flask, request, render_template
 
@@ -15,7 +17,7 @@ def main():
     else:
         ip_address = retrieve_local_ip_adress()
 
-    return render_template('index.html', message=greet(ip_address))
+    return render_template('index.html', message=greet(ip_address)[0], graph = greet(ip_address)[1])
 
 
 if __name__ == '__main__':
