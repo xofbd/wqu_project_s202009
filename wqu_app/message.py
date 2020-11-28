@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 from datetime import datetime, timedelta
-import altair
+import altair as alt
 import altair_viewer
 
 
