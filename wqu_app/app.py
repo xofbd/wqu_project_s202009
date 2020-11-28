@@ -1,6 +1,13 @@
 import os
+<<<<<<< HEAD
 import vega
 
+=======
+from datetime import datetime, timedelta
+import pandas as pd
+import altair as alt
+import altair_viewer
+>>>>>>> Add function to retrieve forecast and to generate chart
 
 from flask import Flask, request, render_template
 
