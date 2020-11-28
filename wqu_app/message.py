@@ -53,7 +53,7 @@ def generate_chart(next_24h):
                                                     tooltip=['Temperature', 'Time'],
                                                     color = 'Day').properties(width=600,height=400).interactive(
                                                         name=None, bind_x=True, bind_y=True)
-    chart_json = line.to_json()
+    chart_json = hour_chart.to_json()
     return chart_json
 
 def greet(ip_address):
