@@ -1,4 +1,5 @@
 import os
+import vega
 
 
 from flask import Flask, request, render_template
