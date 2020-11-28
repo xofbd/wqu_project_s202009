@@ -26,17 +26,15 @@ def get_weather(coords):
     response = requests.get(url, params=params, headers=headers)
     data = response.json()
 
-    return data['properties']['timeseries'][0]['data']['instant']['details']['air_temperature']
+    return data['properties']['timeseries'][0]['data']['instant']['details']['air_temperature'], data['properties']['timeseries']
 
-def get_forecast():
-    forecast = get_weather(get_geolocation(ip_address)[0])[1]
+def get_forecast(forecast_series):
     forecast_list = []
     for i in range(3, 27):
-        forecast_list.append([forecast[i]['time'],forecast[i]['data']['instant']['details']['air_temperature']])
+        forecast_list.append([forecast_series[i]['time'],forecast_series[i]['data']['instant']['details']['air_temperature']])
     return forecast_list
 
-def generate_chart():
-    next_24h = get_forecast()
+def generate_chart(next_24h):
     df = pd.DataFrame(next_24h, columns=['time', 'Temperature'])
     min_scaler = min(df['Temperature'])*1.1
     max_scaler = max(df['Temperature'])*1.1
@@ -55,8 +53,9 @@ def generate_chart():
 
 def greet(ip_address):
     coords, city = get_geolocation(ip_address)
-    temperature = get_weather(coords)
-    chartForecast = generate_chart()
+    temperature, forecast_series = get_weather(coords)
+    next_24h = get_forecast(forecast_series)
+    chartForecast = generate_chart(next_24h)
     return f"Hello, the temperature in {city} (based on your IP address) is {temperature} deg C", chartForecast
 
 
