@@ -22,7 +22,7 @@
             renderer: "svg",
             actions: { export: true, source: true, editor: true }
             };
-        vega-embed("#" + div, url, opt, function (error, result) {
+        vega-lite("#" + div, url, opt, function (error, result) {
            vegaTooltip.vegaLite(result.view, url);
            });
           }
