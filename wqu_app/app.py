@@ -1,4 +1,13 @@
 import os
+<<<<<<< HEAD
+import vega
+
+=======
+from datetime import datetime, timedelta
+import pandas as pd
+import altair as alt
+import altair_viewer
+>>>>>>> Add function to retrieve forecast and to generate chart
 
 from flask import Flask, request, render_template
 
@@ -15,7 +24,7 @@ def main():
     else:
         ip_address = retrieve_local_ip_adress()
 
-    return render_template('index.html', message=greet(ip_address))
+    return render_template('index.html', message=greet(ip_address)[0], graph = greet(ip_address)[1])
 
 
 if __name__ == '__main__':

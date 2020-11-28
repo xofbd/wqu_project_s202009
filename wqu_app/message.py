@@ -1,4 +1,8 @@
 import requests
+import pandas as pd
+from datetime import datetime, timedelta
+import altair as alt
+import altair_viewer
 
 
 def retrieve_local_ip_adress():
@@ -26,8 +30,17 @@ def get_weather(coords):
     response = requests.get(url, params=params, headers=headers)
     data = response.json()
 
-    return data['properties']['timeseries'][0]['data']['instant']['details']['air_temperature']
+    return data['properties']['timeseries'][0]['data']['instant']['details']['air_temperature'], data['properties']['timeseries']
 
+<<<<<<< HEAD
+def get_forecast(forecast_series):
+    forecast_list = []
+    for i in range(3, 27):
+        forecast_list.append([forecast_series[i]['time'],forecast_series[i]['data']['instant']['details']['air_temperature']])
+    return forecast_list
+
+def generate_chart(next_24h):
+=======
 def get_forecast():
     forecast = get_weather(get_geolocation()[0])[1]
     forecast_list = []
@@ -37,6 +50,7 @@ def get_forecast():
 
 def generate_chart():
     next_24h = get_forecast()
+>>>>>>> Add function to retrieve forecast and to generate chart
     df = pd.DataFrame(next_24h, columns=['time', 'Temperature'])
     min_scaler = min(df['Temperature'])*1.1
     max_scaler = max(df['Temperature'])*1.1
@@ -46,6 +60,25 @@ def generate_chart():
     df['Day'] = [df['Time'][i].strftime("%A") for i in range(0,len(df))]
     
    
+<<<<<<< HEAD
+    hour_chart = alt.Chart(df[['Time', 'Temperature', 'Day']]).mark_line(point={'filled':False,'fill':'white'}).encode(alt.X('Time', sort=None),
+                                                    alt.Y('Temperature', scale=alt.Scale(domain=(min_scaler,max_scaler))),
+                                                    tooltip=[
+                                                        alt.Tooltip('Time',timeUnit='yearmonthdate', title='Date'),
+                                                        alt.Tooltip('Time', timeUnit='hoursminutes', title='Time'),
+                                                        alt.Tooltip('Temperature')],
+                                                    color = 'Day').properties(width=600,height=400).interactive(
+                                                        name=None, bind_x=True, bind_y=True)
+    
+    chart_json = hour_chart.to_json()
+    return chart_json
+
+def greet(ip_address):
+    coords, city = get_geolocation(ip_address)
+    temperature, forecast_series = get_weather(coords)
+    next_24h = get_forecast(forecast_series)
+    chartForecast = generate_chart(next_24h)
+=======
     hour_chart = alt.Chart(df).mark_line(point={'filled':False,'fill':'white'}).encode(alt.X('Time', sort=None),
                                                     alt.Y('Temperature', scale=alt.Scale(domain=(min_scaler,max_scaler))),
                                                     tooltip=['Temperature', 'Time'],
@@ -57,6 +90,7 @@ def greet(ip_address):
     coords, city = get_geolocation(ip_address)
     temperature = get_weather(coords)
     chartForecast = generate_chart()
+>>>>>>> Add function to retrieve forecast and to generate chart
     return f"Hello, the temperature in {city} (based on your IP address) is {temperature} deg C", chartForecast
 
 
