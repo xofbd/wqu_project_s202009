@@ -3,28 +3,9 @@
     <head>
         <title> WQU Project</title>
           <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
-        <script>
-        requirejs.config({
-          baseUrl: 'https://cdn.jsdelivr.net/npm/',
-          paths: {
-            "vega-embed":  "vega-embed@5?noext",
-            "vega-lib": "vega-lib?@5noext",
-            "vega-lite": "vega-lite@4?noext",
-            "vega": "vega@5?noext"
-          }
-        });
-
-        requirejs(["vega", "vega-embed"], function(vega, vegaEmbed) {
-             console.log(vega.version);
-             console.log(vegaEmbed.version);
-             window.vegaEmbed=vegaEmbed;
-             window.vega = vega;});
-        </script>
-        <!--
-          <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.17"></script>
-           Import vega-embed 
-          <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.12]"></script>
-         <script src="https://cdn.jsdelivr.net/npm/vega@5.17"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega@3"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@2"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@3"></script>
         -->
     </head>
     <h1>WQU Project</h1>
