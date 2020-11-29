@@ -27,7 +27,7 @@
               actions: {export: true, source: false, editor: false}
             };
 
-            vegaEmbed("#vis, url, opt, function(error, result) {
+            vegaEmbed("#vis", url, opt, function(error, result) {
               // result.view is the Vega View, url is the original Vega-Lite specification
               vegaTooltip.vegaLite(result.view, url);
                 });
