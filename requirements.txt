@@ -6,3 +6,4 @@ altair
 altair_viewer
 ipython
 vega
+streamlit
