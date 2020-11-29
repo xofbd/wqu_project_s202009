@@ -4,9 +4,9 @@
         <title> WQU Project</title>
           <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
         <script src="https://cdn.jsdelivr.net/npm/vega@4"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.8.1"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-embed@3"></script>
-        -->
+        
     </head>
     <h1>WQU Project</h1>
     
@@ -14,9 +14,10 @@
         <div class="text-content">
             <p> {{ message | safe }} </p>
         </div>
-        <div id="vis"></div>
         
+        <h2>24 hour forecast</h2>
         <div id="vis"></div>
+    
 
         <script type="text/javascript">
           function parse(url, div) {
@@ -31,7 +32,6 @@
               vegaTooltip.vegaLite(result.view, url);
             });
           }
-
 
       parse({{graph | safe}},'vis');
         </script>
