@@ -62,8 +62,8 @@ def greet(ip_address):
     coords, city = get_geolocation(ip_address)
     temperature, forecast_series = get_weather(coords)
     next_24h = get_forecast(forecast_series)
-    chartForecast = generate_chart(next_24h)
-    return f"Hello, the temperature in {city} (based on your IP address) is {temperature} deg C", chartForecast
+    chartForecast, streamlitChart  = generate_chart(next_24h)
+    return f"Hello, the temperature in {city} (based on your IP address) is {temperature} deg C", chartForecast, streamlitChart
 
 
 if __name__ == '__main__':
