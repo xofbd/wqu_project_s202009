@@ -50,7 +50,7 @@ def generate_chart(next_24h):
    
     hour_chart = alt.Chart(df[['Time', 'Temperature', 'Day']]).mark_line(point={'filled':False,'fill':'white'}).encode(alt.X('Time', sort=None),
                                                     alt.Y('Temperature', scale=alt.Scale(domain=(min_scaler,max_scaler))),
-                                                    tooltip=
+                                                    tooltip=[
                                                         alt.Tooltip('Time',timeUnit='yearmonthdate', title='Date'),
                                                         alt.Tooltip('Time', timeUnit='hoursminutes', title='Time'),
                                                         alt.Tooltip('Temperature')],
