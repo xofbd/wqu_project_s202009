@@ -3,6 +3,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 import altair as alt
 import altair_viewer
+import streamlit as st
 
 
 def retrieve_local_ip_adress():
@@ -53,8 +54,9 @@ def generate_chart(next_24h):
                                                     tooltip=['Temperature', 'Time'],
                                                     color = 'Day').properties(width=600,height=400).interactive(
                                                         name=None, bind_x=True, bind_y=True)
+    streamlit_chart = st.write(hour_chart)
     chart_json = hour_chart.to_json()
-    return chart_json
+    return streamlit_chart, chart_json
 
 def greet(ip_address):
     coords, city = get_geolocation(ip_address)
