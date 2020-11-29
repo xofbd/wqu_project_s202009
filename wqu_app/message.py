@@ -56,7 +56,7 @@ def generate_chart(next_24h):
                                                         name=None, bind_x=True, bind_y=True)
     streamlit_chart = st.write(hour_chart)
     chart_json = hour_chart.to_json()
-    return streamlit_chart, chart_json
+    return chart_json, streamlit_chart
 
 def greet(ip_address):
     coords, city = get_geolocation(ip_address)
