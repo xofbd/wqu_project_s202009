@@ -2,6 +2,11 @@
 <html>
     <head>
         <title> WQU Project</title>
+          <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+          <script src="https://cdn.jsdelivr.net/npm/vega-lite@[VERSION]"></script>
+          <!-- Import vega-embed -->
+          <script src="https://cdn.jsdelivr.net/npm/vega-embed@[VERSION]"></script>
+         <script src="https://cdn.jsdelivr.net/npm/vega@[VERSION]"></script>
     </head>
     <h1>WQU Project</h1>
     
@@ -9,28 +14,28 @@
         <div class="text-content">
             <p> {{ message | safe }} </p>
         </div>
-        <div class="component">
-            <p> {{ streamlit | safe }} </p>
-        </div>
-     
-        <div id="altair-line"></div>
-        </div>
-        <!-- Placeholder for the tooltip -->
-        <div id="vis-tooltip" class="vg-tooltip"></div>
-        </div>
-        <!-- Render Charts -->
+        <div id="vis"></div>
+        
+        <div id="vis"></div>
+
         <script type="text/javascript">
-        function parse(url, div) {
-        var opt = { mode: "vega-lite",
-            renderer: "svg",
-            actions: { export: true, source: true, editor: true }
+          function parse(url, div) {
+            var opt = {
+              mode: "vega-lite",
+              renderer: "svg",
+              actions: {export: true, source: false, editor: false}
             };
-        vega-lite("#" + div, url, opt, function (error, result) {
-           vegaTooltip.vegaLite(result.view, url);
-           });
+
+            vegaEmbed("#"+div, url, opt, function(error, result) {
+              // result.view is the Vega View, url is the original Vega-Lite specification
+              vegaTooltip.vegaLite(result.view, url);
+            });
           }
-        //Parse your Json variable here
-        parse({{ graph | safe }}, "altair-line")
+
+
+      parse({{graph | safe}},'vis');
         </script>
+        
+        
     </body>
 </html>
