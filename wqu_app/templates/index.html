@@ -5,7 +5,7 @@
           <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
         <script src="https://cdn.jsdelivr.net/npm/vega@4"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.13.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@3.1.1"></script>
         
     </head>
     <h1>WQU Project</h1>
@@ -30,10 +30,10 @@
             vegaEmbed("#"+div, url, opt, function(error, result) {
               // result.view is the Vega View, url is the original Vega-Lite specification
               vegaTooltip.vegaLite(result.view, url);
-            });
-          }
+                });
+              }
 
-      parse({{graph | safe}},'vis');
+              parse({{graph | safe}},'vis');
         </script>
         
         
