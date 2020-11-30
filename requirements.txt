@@ -2,13 +2,6 @@ flask
 requests
 gunicorn
 datetime
-<<<<<<< HEAD
 altair
 altair_viewer
 ipython
-vega
-=======
-json
-altair
-altair_viewer
->>>>>>> Add function to retrieve forecast and to generate chart
