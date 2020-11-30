@@ -1,5 +1,7 @@
 SHELL := /bin/bash
 
+.PHONY: all tests clean
+
 all: clean venv
 
 venv: requirements.txt
@@ -10,5 +12,10 @@ venv: requirements.txt
 deploy: venv
 	source venv/bin/activate && bin/run_app
 
+tests: venv
+	source venv/bin/activate && pytest -v tests
+
 clean:
 	rm -rf venv
+	rm -rf .pytest_cache
+	find . | grep __pycache__ | xargs rm -rf
