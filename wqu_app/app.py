@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, request, render_template
 
-from message import greet, retrieve_local_ip_adress
+from wqu_app.message import greet, retrieve_local_ip_adress
 
 app = Flask(__name__)
 DEPLOY = os.getenv('DEPLOY')
