@@ -14,8 +14,8 @@ def get_geolocation(ip_address):
     data = response.json()
     city = data['city']
     coords = [float(coord) for coord in data['loc'].split(',')]
-
-    return coords, city
+    region = data['region']
+    return coords, city, region
 
 
 def get_weather(coords):
@@ -30,10 +30,17 @@ def get_weather(coords):
 
 
 def greet(ip_address):
-    coords, city = get_geolocation(ip_address)
+    coords, city, region = get_geolocation(ip_address)
     temperature = get_weather(coords)
 
-    return f"Hello, the temperature in {city} (based on your IP address) is {temperature} deg C"
+    if region == None:
+    	return f"Hello, the temperature in {city} (based on your IP address) is {temperature} deg C"
+    elif region == " ":
+    	return f"Hello, the temperature in {city} (based on your IP address) is {temperature} deg C"
+    elif city not in region:
+    	return f"Hello, the temperature in {city}, {region} (based on your IP address) is {temperature} deg C"
+    else:
+    	return f"Hello, the temperature in {city} (based on your IP address) is {temperature} deg C"
 
 
 if __name__ == '__main__':
