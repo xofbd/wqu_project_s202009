@@ -13,8 +13,12 @@ def get_geolocation(ip_address):
     response = requests.get(f'https://ipinfo.io/{ip_address}')
     data = response.json()
     city = data['city']
+    region = data['region']
     coords = [float(coord) for coord in data['loc'].split(',')]
-
+    if region is None or city not in region:
+    	return coords, city
+    else:
+    	city = city + ", " + region
     return coords, city
 
 
@@ -30,10 +34,9 @@ def get_weather(coords):
 
 
 def greet(ip_address):
-    coords, city = get_geolocation(ip_address)
+    coords, city_region = get_geolocation(ip_address)
     temperature = get_weather(coords)
-
-    return f"Hello, the temperature in {city} (based on your IP address) is {temperature} deg C"
+    return f"Hello, the temperature in {city_region} (based on your IP address) is {temperature} deg C"
 
 
 if __name__ == '__main__':
