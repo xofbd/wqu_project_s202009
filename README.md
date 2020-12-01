@@ -71,6 +71,7 @@ Thanks to the following people who have contributed to this project:
 
 * [xofbd](https://github.com/xofbd)
 * [turbatuandrei] (https://github.com/turbatuandrei)
+* [cgates30] (https://github.com/cgates30)
 
 ## License
 
