@@ -16,8 +16,8 @@ def main():
         ip_address=request.headers['X-Forwarded-For']
     else:
         ip_address=retrieve_local_ip_adress()
-    message, graph = greet(ip_address)
-    return render_template('index.html', message, graph)
+    results = dict(zip(('message', 'graph'), greet(ip_address)))
+    return render_template('index.html', message=results['message'], graph=results['graph'])
 
 
 if __name__ == '__main__':
