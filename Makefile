@@ -1,6 +1,7 @@
 SHELL := /bin/bash
+MAX_LINE_LENGTH_FLAKE := 88
 
-.PHONY: all deploy tests clean
+.PHONY: all deploy tests test-unit test-flake8 clean
 
 all: clean deploy
 
@@ -12,8 +13,13 @@ venv: requirements.txt
 deploy: venv
 	source venv/bin/activate && bin/run_app
 
-tests: venv
+tests: test-unit test-flake8
+
+test-unit: venv
 	source venv/bin/activate && pytest -v tests
+
+test-flake8: venv
+	source venv/bin/activate && flake8 --max-line-length $(MAX_LINE_LENGTH_FLAKE) wqu_app
 
 clean:
 	rm -rf venv

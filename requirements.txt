@@ -6,3 +6,4 @@ altair
 altair_viewer
 ipython
 pytest
+flake8
