@@ -1,8 +1,8 @@
 SHELL := /bin/bash
 
-.PHONY: all tests clean
+.PHONY: all deploy tests clean
 
-all: clean venv
+all: clean deploy
 
 venv: requirements.txt
 	test -d venv || python3 -m venv venv
