@@ -1,9 +1,8 @@
-flask
-requests
-gunicorn
-datetime
-altair
-altair_viewer
-ipython
-pytest
-flake8
+Flask==1.1.2
+requests==2.25.0
+gunicorn==20.0.4
+altair==4.1.0
+altair-viewer==0.3.0
+ipython==7.19.0
+pytest==6.1.2
+flake8==3.8.4
