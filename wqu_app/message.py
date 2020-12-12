@@ -4,16 +4,19 @@ from datetime import datetime, timedelta
 import altair as alt
 
 
+HEADERS = {'User-Agent': 'WQU weather application', 'Accept': 'application/json'}
+
+
 def retrieve_local_ip_adress():
     """Return IP address of our computer."""
-    response = requests.get('https://api.ipify.org')
+    response = requests.get('https://api.ipify.org', headers=HEADERS)
 
     return response.text
 
 
 def get_geolocation(ip_address):
     """Return gelociaton of an IP address."""
-    response = requests.get(f'https://ipinfo.io/{ip_address}')
+    response = requests.get(f'https://ipinfo.io/{ip_address}', headers=HEADERS)
     data = response.json()
     city = data['city']
     coords = [float(coord) for coord in data['loc'].split(',')]
@@ -25,8 +28,7 @@ def get_weather(coords):
     """Return current temperature and forecast for a given set of coordinates."""
     url = 'https://api.met.no/weatherapi/locationforecast/2.0/compact'
     params = {'lat': coords[0], 'lon': coords[1]}
-    headers = {'User-Agent': 'WQU weather application'}
-    response = requests.get(url, params=params, headers=headers)
+    response = requests.get(url, params=params, headers=HEADERS)
     data_forecast = response.json()['properties']['timeseries']
     current_temp = data_forecast[0]['data']['instant']['details']['air_temperature']
 
