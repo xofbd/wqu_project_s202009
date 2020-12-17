@@ -1,0 +1,4 @@
+-c base.txt
+ipython==7.19.0
+pytest==6.1.2
+flake8==3.8.4
