@@ -83,4 +83,6 @@ def greet(ip_address):
 
 
 if __name__ == '__main__':
-    print(greet())
+    ip_address = retrieve_local_ip_adress()
+    msg_str, chart_forecast = greet(ip_address)
+    print(msg_str)

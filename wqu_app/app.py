@@ -1,6 +1,5 @@
 import os
 
-
 from flask import Flask, request, render_template
 
 from wqu_app.message import greet, retrieve_local_ip_adress
